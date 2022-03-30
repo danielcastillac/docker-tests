@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    image: imagename
+    container_name: containerName
+    ports:
+      - "8000:8000"
+    environment:
+      - envFoo=envBar
+    secrets:
+      - some_key
+      - some_secret_key
+secrets:
+    some_key:
+      file: ./credentials/some_key
+    some_secret_key:
+      file: ./credentials/some_secret_key
