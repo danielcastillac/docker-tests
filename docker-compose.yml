@@ -10,8 +10,14 @@ services:
     secrets:
       - some_key
       - some_secret_key
+    #volumes:
+    #  - type: bind
+    #    source: /host_mnt/E/Trascender_Global/
+    volumes:
+      - e:\Documents\dockerStorage:/root/
+      - e:\Documents\GitHub:/mnt/Github/
 secrets:
-    some_key:
-      file: ./credentials/some_key
-    some_secret_key:
-      file: ./credentials/some_secret_key
+  some_key:
+    file: ./credentials/some_key
+  some_secret_key:
+    file: ./credentials/some_secret_key

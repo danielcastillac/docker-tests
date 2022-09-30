@@ -6,13 +6,16 @@ app = FastAPI()
 
 SECRETS_ROUTE = "/run/secrets/"
 
+
 @app.get("/")
 async def root():
     return {"Response": "App works"}
 
+
 @app.get("/envtest")
 def envtest():
     return {"Environmental variables": os.environ["envFoo"]}
+
 
 @app.get("/secrettest")
 def secrettest():
@@ -20,6 +23,13 @@ def secrettest():
         line = f.readline()
         return {"Secrets": line}
 
+
+@app.get("/list_files")
+def list_files():
+    files = os.listdir("./")
+    return {"Files: " + "\n".join(files)}
+
+
 if __name__ == "__main__":
     uvicorn.run(app, port=8000, host="0.0.0.0")
-    #Secretos en /run/secrets/
+    # Secretos en /run/secrets/
